@@ -6,7 +6,7 @@ module.exports = {
     moduleFileExtensions: ['js', 'ts', 'json', 'tsx'],
     setupFiles: ['<rootDir>/enzyme.config.js'],
     testEnvironment: 'jsdom',
-    testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
+    testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)', '**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
     testPathIgnorePatterns: ['\\\\node_modules\\\\'],
     testURL: 'http://localhost',
     transformIgnorePatterns: ['<rootDir>/node_modules/'],
@@ -15,6 +15,7 @@ module.exports = {
         '^.+\\.(css|less|scss)$': 'babel-jest',
     },
     transform: {
+        '^.+\\.(ts|tsx)$': 'ts-jest',
         '^.+\\.(js|jsx)$': 'babel-jest',
         '\\.svg$': '<rootDir>/fileTransformer.js',
     },
