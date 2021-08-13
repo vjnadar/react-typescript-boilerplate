@@ -20,6 +20,8 @@
         "@types/jest": "^26.0.24",
         "@types/react": "^17.0.16",
         "@types/react-dom": "^17.0.9",
+        "@typescript-eslint/eslint-plugin": "^4.29.1",
+        "@typescript-eslint/parser": "^4.29.1",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^27.0.6",
@@ -51,5 +53,10 @@
         "node-sass": "^6.0.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app"
+        ]
     }
 }
