@@ -9,11 +9,12 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './build'),
-        publicPath: '',
+        publicPath: '/',
     },
     mode: 'development',
     devServer: {
         open: true,
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, './build'),
         index: 'index.html',
         port: 3000,
