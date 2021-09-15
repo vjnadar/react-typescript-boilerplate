@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import App from './App';
 
@@ -17,5 +18,10 @@ describe('App.js test', () => {
         expect(wrapper?.find('img')).toHaveLength(1);
         expect(wrapper?.find('p')).toHaveLength(1);
         expect(wrapper?.find('a')).toHaveLength(1);
+    });
+    it('should test testing library', () => {
+        render(<App />);
+        const linkElement = screen.getByText('Learn React');
+        expect(linkElement).toBeInTheDocument();
     });
 });
