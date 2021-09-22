@@ -20,8 +20,15 @@ describe('App.js test', () => {
         expect(wrapper?.find('a')).toHaveLength(1);
     });
     it('should test testing library', () => {
+        const {getByText}=screen;
         render(<App />);
-        const linkElement = screen.getByText('Learn React');
+        const linkElement = getByText(/reload.$/i);
+        expect(linkElement).toBeInTheDocument();
+    });
+    it('should test the message sent by the mock server.', async() => {
+        const {findByText}=screen;
+        render(<App />);
+        const linkElement = await findByText('Learn React!');
         expect(linkElement).toBeInTheDocument();
     });
 });

@@ -1,0 +1,1 @@
+export {appComponentHandlers} from './appComponent';
