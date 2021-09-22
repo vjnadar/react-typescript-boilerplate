@@ -1,1 +1,1 @@
-export {appComponentHandlers} from './appComponent';
+export { appComponentHandlers } from "./appComponent";
