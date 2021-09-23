@@ -31,6 +31,7 @@
     "no-console": 0,
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": ["error"],
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off"
