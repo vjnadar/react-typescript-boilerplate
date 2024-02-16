@@ -14,7 +14,7 @@ describe("App.js test", () => {
         const editSection = screen.getByTestId("edit");
         expect(editSection).toHaveTextContent(/Edit src\/App.tsx and save to reload./i);
         await waitFor(() => {
-            const linkElement = screen.getByText("Learn React.");
+            const linkElement = screen.getByText(/learn react./i);
             expect(linkElement).toBeInTheDocument();
         });
     });
