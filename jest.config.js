@@ -4,12 +4,15 @@ module.exports = {
   collectCoverageFrom: ["src/**/*.{ts,tsx,mjs}"],
   coverageDirectory: "coverage",
   moduleFileExtensions: ["js", "ts", "json", "tsx"],
-  setupFiles: ["<rootDir>/enzyme.config.js"],
+  setupFiles: ["./jest.polyfills.js"],
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   testEnvironment: "jsdom",
   testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)", "**/__tests__/**/*.js?(x)", "**/?(*.)+(spec|test).js?(x)"],
   testPathIgnorePatterns: ["\\\\node_modules\\\\"],
-  testURL: "http://localhost",
+  testEnvironmentOptions: {
+    url: "http://localhost",
+    customExportConditions: [""]
+  },
   transformIgnorePatterns: ["<rootDir>/node_modules/"],
   verbose: false,
   moduleNameMapper: {

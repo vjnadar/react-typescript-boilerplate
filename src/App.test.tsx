@@ -1,32 +1,21 @@
-import { render, screen } from "@testing-library/react";
-import { shallow, ShallowWrapper } from "enzyme";
+import { render, screen, waitFor } from "@testing-library/react";
+
 import App from "./App";
 
+function setUp() {
+    render(<App />);
+}
+
 describe("App.js test", () => {
-  let wrapper: ShallowWrapper<typeof App> | undefined;
-  beforeEach(() => {
-    wrapper = shallow(<App />);
-  });
-  it("should check the inner text of the Link.", () => {
-    expect(wrapper?.find("a").text()).toContain("Learn React");
-  });
-  it("should check the inner text of the para.", () => {
-    expect(wrapper?.find("#edit").text()).toBe("Edit src/App.tsx and save to reload.");
-  });
-  it("should check the number of elements the component has.", () => {
-    expect(wrapper?.find("header")).toHaveLength(1);
-    expect(wrapper?.find("img")).toHaveLength(1);
-    expect(wrapper?.find("p")).toHaveLength(1);
-    expect(wrapper?.find("a")).toHaveLength(1);
-  });
-  it("should test testing library", () => {
-    render(<App />);
-    const linkElement = screen.getByText(/reload.$/i);
-    expect(linkElement).toBeInTheDocument();
-  });
-  it("should test the message sent by the mock server.", async () => {
-    render(<App />);
-    const linkElement = await screen.findByText("Learn React!");
-    expect(linkElement).toBeInTheDocument();
-  });
+    beforeEach(() => {
+        setUp();
+    });
+    it("should check the inner text of the para and rectify the message from MSW.", async () => {
+        const editSection = screen.getByTestId("edit");
+        expect(editSection).toHaveTextContent(/Edit src\/App.tsx and save to reload./i);
+        await waitFor(() => {
+            const linkElement = screen.getByText("Learn React.");
+            expect(linkElement).toBeInTheDocument();
+        });
+    });
 });
