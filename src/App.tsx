@@ -13,7 +13,7 @@ function App(): JSX.Element {
                 const response = await axios.get("http://localhost:3030/dummyUrl");
                 setMessage(response.data.message);
             } catch (error) {
-                // Error thats never going to happen in production!
+                // Error thats never going to happen in production.
             }
         }
         if (process.env.NODE_ENV === "test" && mounted) {

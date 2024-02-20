@@ -4,32 +4,26 @@
     "description": "A simple react project setup that uses typescript and webpack5.",
     "main": "index.js",
     "scripts": {
-        "test": "cross-env NODE_ENV=test jest --watchAll --verbose --coverage",
+        "test": "cross-env NODE_ENV=test jest",
+        "test_dev": "cross-env NODE_ENV=test jest --watchAll --verbose --coverage",
         "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
         "start": "cross-env NODE_ENV=development webpack serve --config webpack.dev.config.js --hot",
-        "lint": "eslint src",
-        "prettier": "prettier --write \"./**/*.{ts,tsx,json}\""
+        "lint": "eslint --fix",
+        "prettier": "prettier --write ",
+        "postinstall": "husky && husky install",
+        "prepublishOnly": "pinst --disable",
+        "postpublish": "pinst --enable"
     },
     "author": "V.J.Nadar",
     "license": "ISC",
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn test && lint-staged"
-        }
-    },
     "lint-staged": {
-        "*.ts": [],
-        "*.tsx": [
-            "eslint --fix",
-            "prettier --write"
+        "*{.ts,.tsx}": [
+            "yarn lint",
+            "yarn prettier",
+            "yarn test"
         ],
-        "*.js": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.json": [
-            "eslint --fix",
-            "prettier --write"
+        "*{.js,.json}": [
+            "yarn prettier"
         ]
     },
     "devDependencies": {
